@@ -3,7 +3,7 @@ public class BankingApplication {
 
     public static void main(String[] args) {
 
-        BankAccount obj1 = new BankAccount("B0098");
+        BankAccount obj1 = new BankAccount();
         obj1.signUp();
         obj1.checkIn();
         obj1.showMenu();
@@ -17,16 +17,19 @@ public class BankingApplication {
         int previousTransaction;
         int customerPin;
         String customerName;
-        String customerId;
+        String customerId = "4637 aaaa bb24";
 
 
-        BankAccount(String cid) {
-            customerId = cid;
-        }
+        //BankAccount(String cid) {
+            //customerId = cid;
+       // }
 
         void setCustomerName(String a, String b) {
             customerName = a + " " + b;
 
+        }
+        public String parseDigits() {
+            return customerId.replaceAll("[^0-9]","*");
         }
 
         void setCustomerId(String y) {
@@ -106,7 +109,8 @@ public class BankingApplication {
 
                 System.out.println("-------------------------------------------------------");
                 System.out.println("Welcome " + customerName);
-                System.out.println("Your ID is " + customerId);
+                System.out.println("Your ID is " + parseDigits());
+                parseDigits();
                 System.out.println("\n");
                 System.out.println("A. Check Balance");
                 System.out.println("B. Deposit");
