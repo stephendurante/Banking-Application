@@ -3,11 +3,13 @@ public class BankingApplication {
 
     public static void main(String[] args) {
 
-        BankAccount obj1 = new BankAccount("Damian Durante", "BA0001");
+        BankAccount obj1 = new BankAccount("B0098");
         obj1.signUp();
+        obj1.checkIn();
         obj1.showMenu();
 
         }
+
     }
 
     class BankAccount {
@@ -17,14 +19,13 @@ public class BankingApplication {
         String customerName;
         String customerId;
 
-        BankAccount(String cname,String cid)
-        {
-            customerName = cname;
+
+        BankAccount(String cid) {
             customerId = cid;
         }
 
-        void setCustomerName(String x) {
-            x = customerName;
+        void setCustomerName(String a, String b) {
+            customerName = a + " " + b;
 
         }
 
@@ -57,15 +58,11 @@ public class BankingApplication {
         }
 
         void insertCard(String acc) {
-            if (acc != "OK") {
-                System.out.println("Loading...");
-            } else if (acc == "OK") {
-                System.out.println("Please Try again");
-            }
+            System.out.println("Loading...");
         }
-        void enterPin(int pin) {
-            pin =
 
+        void enterPin(int code) {
+            customerPin = code;
         }
 
         void signUp() {
@@ -75,96 +72,105 @@ public class BankingApplication {
             String first = scanner.nextLine();
             System.out.println("Last Name.");
             String last = scanner.nextLine();
-            BankAccount obj2 = new BankAccount(first,last);
+            setCustomerName(first,last);
             System.out.println("Create Pin #. (4 characters)");
             int pin = scanner.nextInt();
+            enterPin(pin);
+            System.out.println("--------------------------------------------------------");
 
 
         }
 
+        void checkIn() {
+            Scanner scanner = new Scanner(System.in);
 
 
-        void showMenu()                               /* Method #4 */
-        {
+            System.out.println("Type OK after Card is inserted:");
+            String accept = scanner.nextLine();
+            insertCard(accept);
+            System.out.println("Enter Pin Number");
+            int tryPin = scanner.nextInt();
+            if (tryPin != customerPin) {
+                System.out.println("Incorrect Pin. Please try again.");
+            } else if (tryPin == customerPin); {
+            }
+
+    }
+
+
+        void showMenu()                               /* Method #4 */ {
             char option = '\0';
             Scanner scanner = new Scanner(System.in);
 
-            System.out.println("Type OK after Card is inserted:");
-             String accept = scanner.nextLine();
-            insertCard(accept);
-            System.out.println("Pin Number");
-            int pin = scanner.nextInt();
-            enterPin(pin);
-            System.out.println("Welcome " + customerName);
-            String id = scanner.nextLine();
-            setCustomerId(id);
-            System.out.println("Your ID is " + customerId);
-            System.out.println("\n");
-            System.out.println("A. Check Balance");
-            System.out.println("B. Deposit");
-            System.out.println("C. Withdraw");
-            System.out.println("D. Previous Transaction");
-            System.out.println("E. Exit");
+            //checkIn();
 
-            do {                                   /* Do/While loop */
-                System.out.println("===================================================================================");
-                System.out.println("Enter an option");
-                System.out.println("===================================================================================");
-                option = scanner.next().charAt(0);
+                System.out.println("-------------------------------------------------------");
+                System.out.println("Welcome " + customerName);
+                System.out.println("Your ID is " + customerId);
                 System.out.println("\n");
+                System.out.println("A. Check Balance");
+                System.out.println("B. Deposit");
+                System.out.println("C. Withdraw");
+                System.out.println("D. Previous Transaction");
+                System.out.println("E. Exit");
 
-                switch (option) {                    /* Switch Statement */
-                    case 'A':
-                        System.out.println("--------------------------------------------------------");
-                        System.out.println("Balance = " + balance);
-                        System.out.println("--------------------------------------------------------");
-                        System.out.println("\n");
-                        break;
+                do {                                  /* Do/While loop */
+                    System.out.println("===================================================================================");
+                    System.out.println("Enter an option");
+                    System.out.println("===================================================================================");
+                    option = scanner.next().charAt(0);
+                    System.out.println("\n");
 
-                    case 'B':
-                        System.out.println("--------------------------------------------------------");
-                        System.out.println("Enter an amount to deposit");
-                        System.out.println("--------------------------------------------------------");
-                        int amount = scanner.nextInt();
-                        deposit(amount);
-                        System.out.println("\n");
-                        break;
+                    switch (option) {                    /* Switch Statement */
+                        case 'A':
+                            System.out.println("--------------------------------------------------------");
+                            System.out.println("Balance = " + balance);
+                            System.out.println("--------------------------------------------------------");
+                            System.out.println("\n");
+                            break;
 
-                    case 'C':
-                        System.out.println("--------------------------------------------------------");
-                        System.out.println("Enter an amount to withdraw");
-                        System.out.println("--------------------------------------------------------");
-                        int amount2 = scanner.nextInt();
-                        withdraw(amount2);
-                        System.out.println("\n");
-                        break;
+                        case 'B':
+                            System.out.println("--------------------------------------------------------");
+                            System.out.println("Enter an amount to deposit");
+                            System.out.println("--------------------------------------------------------");
+                            int amount = scanner.nextInt();
+                            deposit(amount);
+                            System.out.println("\n");
+                            break;
 
-                    case 'D':
-                        System.out.println("--------------------------------------------------------");
-                        getPreviousTransaction();
-                        System.out.println("--------------------------------------------------------");
-                        System.out.println("\n");
-                        break;
+                        case 'C':
+                            System.out.println("--------------------------------------------------------");
+                            System.out.println("Enter an amount to withdraw");
+                            System.out.println("--------------------------------------------------------");
+                            int amount2 = scanner.nextInt();
+                            withdraw(amount2);
+                            System.out.println("\n");
+                            break;
 
-                    case 'E':
-                        System.out.println("--------------------------------------------------------");
-                        break;
+                        case 'D':
+                            System.out.println("--------------------------------------------------------");
+                            getPreviousTransaction();
+                            System.out.println("--------------------------------------------------------");
+                            System.out.println("\n");
+                            break;
 
-                    default:
-                        System.out.println("Invalid Option! Please enter again");
-                        break;
+                        case 'E':
+                            System.out.println("--------------------------------------------------------");
+                            break;
 
-                }
+                        default:
+                            System.out.println("Invalid Option! Please enter again");
+                            break;
 
-                }while (option != 'E') ;
+                    }
 
-                    System.out.println("Thank you for using our services");
-                }
+                } while (option != 'E');
+
+                System.out.println("Thank you for using our services");
 
 
-
-            }
-
+        }
+    }
 
 
 
