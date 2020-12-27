@@ -24,7 +24,6 @@ public class Menu {
 
         pickOption = new JLabel("Select an Option");
         pickOption.setSize(300,25);
-        //pickOption.setVerticalAlignment(SwingConstants.TOP);
         pickOption.setBounds(5,3,165,25);
         panelM.add(pickOption);
 

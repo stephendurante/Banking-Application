@@ -12,12 +12,8 @@ public class Login extends Menu {
     private static JLabel customerPin;
     private static JTextField enterFirst1;
     private static JPasswordField enterPin;
-    //private static JLabel customerID;
-    //private static JPasswordField enterID;
     private static JButton next;
     Font tr = new Font("times new roman",Font.ITALIC, 14);
-    //private String firstName = enterFirst1.getText();
-    //private String lastName = enterLast1.getText();
 
 
 
@@ -40,7 +36,6 @@ public class Login extends Menu {
 
         welcome = new JLabel("Welcome,");
         welcome.setBounds(10,30,200,25);
-        //welcome.setText();
         panelL.add(welcome);
 
 

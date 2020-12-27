@@ -39,8 +39,6 @@ public class SignUp {
 
         enterFirst = new JTextField();
         enterFirst.setBounds(100,20,165,25);
-        //enterFirst.setText(enterFirst.getText());
-        //enterFirst.addActionListener(new setFirst());
         panel.add(enterFirst);
 
         lastName = new JLabel("Last Name");
@@ -84,18 +82,9 @@ public class SignUp {
             welcome.setText("Welcome, " + enterFirst.getText() + " " + enterLast.getText() + "!");
 
 
-
-
         }
     }
 
-    public class setFirst implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            String x = enterFirst.getText();
-        }
-    }
 
     public static void main(String[] args) {
 
