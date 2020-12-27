@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class BankingApplication {
+public class BankingApplication  {
 
     public static void main(String[] args) {
 
@@ -19,10 +19,6 @@ public class BankingApplication {
         String customerName;
         String customerId = "4637 aaaa bb24";
 
-
-        //BankAccount(String cid) {
-            //customerId = cid;
-       // }
 
         void setCustomerName(String a, String b) {
             customerName = a + " " + b;
